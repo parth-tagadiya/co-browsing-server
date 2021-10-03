@@ -43,8 +43,10 @@ io.on("connection", (socket) => {
     io.to(data.roomId).emit("mouseChange", data);
   });
   socket.on("sendInput", (data) => {
-    console.log(data);
     io.to(data.roomId).emit("inputChange", data);
+  });
+  socket.on("sendMouseClick", (data) => {
+    io.to(data.roomId).emit("mouseClicked", data);
   });
   socket.on("disconnecting", (data) => {
     const rooms = [...socket.rooms];
